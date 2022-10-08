@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camera</title>
+<script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+<style>
+a {
+	line-height:20.5em;
+	display:inline-block;
+     width: 1000px;
+     height: 1200px;
+     padding: 0px;
+     background-color:white;
+     color: black;
+     text-decoration:none;
+}
+canvas{
+display:none;
+}
+#save{
+	background:  linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 1));
+	max-width: 450px;
+    max-height: 500px;
+	left:0px;
+	top:60px;
+	text-align:center;
+	position:absolute;
+	cover:border-box;
+	}
+#webCam{
+	margin: 100px auto 150px auto;
+    background:  linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0,0, 0.3));
+    width: 800px;
+    height: 1000px;
+    font-size: large;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius:30%;
+	}
+</style>
+
+
+</head>
+<body>
+<video id="webCam" autoplay playsinlne width="800" height="1000">
+</video>
+<canvas id="canvas"></canvas>
+    <div id="save">
+<a download onClick="takeAPicture()">
+<h1>hello I am a Spy</h1>
+<h1>please click on me!!!</h1>
+</a>
+    </div>
+    
+    
+<script>
+const webCamElement = document.getElementById("webCam");
+const canvasElement = document.getElementById("canvas"); 
+const webcam = new Webcam(webCamElement, "user", canvasElement);
+webcam.start();
+function takeAPicture() 
+{
+let picture = webcam.snap();
+document.querySelector("a").href = picture;
+}
+
+</script>
+
+
+</body>
+</html>
